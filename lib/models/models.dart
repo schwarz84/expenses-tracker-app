@@ -1,0 +1,1 @@
+export 'package:expenses_tracker/models/expense.dart';
