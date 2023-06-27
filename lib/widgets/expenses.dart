@@ -20,6 +20,14 @@ class _ExpensesState extends State<Expenses> {
     Expense(title: 'Viaje a Monaco', amount: 60000.20, date: DateTime.now(), category: Category.viajes),
     Expense(title: 'Hamburgesa', amount: 9.77, date: DateTime.now(), category: Category.comida)
   ];
+
+  void _addNewExpenseModal() {
+    showModalBottomSheet(
+      context: context,
+      builder: (ctx) => const NewExpense()
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,7 +35,7 @@ class _ExpensesState extends State<Expenses> {
         title: const Text('Control de Gastos'),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: _addNewExpenseModal,
             icon: const Icon(Icons.add)
           )
         ],
