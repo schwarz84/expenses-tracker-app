@@ -19,7 +19,7 @@ class _NewExpenseState extends State<NewExpense> {
 
   final _amountController = TextEditingController();
 
-  DateTime? _selectedDate;
+  DateTime? _selectedDate = DateTime.now();
 
   Category _selectedCategory = Category.ahorro;
 
