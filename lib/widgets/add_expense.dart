@@ -53,7 +53,12 @@ class _NewExpenseState extends State<NewExpense> {
                 onPressed: () {
                   Navigator.pop(ctx);
                 },
-                child: const Text('Cerrar')
+                child: Text(
+                  'Cerrar',
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.error
+                  ),
+                )
               )
             ],
           );
