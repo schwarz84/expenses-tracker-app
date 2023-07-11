@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+// import 'package:flutter/services.dart';
+
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:expenses_tracker/widgets/widgets.dart';
 
@@ -8,6 +10,11 @@ var kDarkScheme = ColorScheme.fromSeed(
       seedColor: const Color.fromARGB(255, 6, 91, 6));
 
 void main() {
+  // WidgetsFlutterBinding.ensureInitialized();
+  // SystemChrome.setPreferredOrientations([
+  //   DeviceOrientation.portraitUp
+  // ]).then((value) => {
+
   runApp(
     MaterialApp(
       localizationsDelegates: const [
@@ -60,4 +67,5 @@ void main() {
       home: const Expenses(),
     )
   );
+  // });
 }

@@ -85,73 +85,80 @@ class _NewExpenseState extends State<NewExpense> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(20, 40, 20, 20),
-      child: Column(
-        children: [
-          TextField(
-            controller: _titleController,
-            maxLength: 50,
-            decoration: const InputDecoration(
-              label: Text('Titulo')
-            ),
-          ),
-          Row(
+    final keyboardSpace = MediaQuery.of(context).viewInsets.bottom;
+    return SizedBox(
+      height: double.infinity,
+      child: SingleChildScrollView(
+        reverse: true,
+        child: Padding(
+          padding: EdgeInsets.fromLTRB(20, 40, 20, keyboardSpace + 20),
+          child: Column(
             children: [
-              Expanded(
-                child: TextField(
-                  controller: _amountController,
-                  keyboardType: TextInputType.number,
-                  decoration: const InputDecoration(
-                    label: Text('Monto'),
-                    prefixText: '\$ '
-                  ),
+              TextField(
+                controller: _titleController,
+                maxLength: 50,
+                decoration: const InputDecoration(
+                  label: Text('Titulo')
                 ),
               ),
-              const SizedBox(width: 16),
-              Expanded(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Text(_selectedDate == null ? 'Seleccionar Fecha' : formatter.format(_selectedDate!)),
-                    IconButton(
-                      onPressed: _showDataPicker,
-                      icon: const Icon(Icons.calendar_month))
-                  ],
-                ),
+              Row(
+                children: [
+                  Expanded(
+                    child: TextField(
+                      controller: _amountController,
+                      keyboardType: TextInputType.number,
+                      decoration: const InputDecoration(
+                        label: Text('Monto'),
+                        prefixText: '\$ '
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 16),
+                  Expanded(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Text(_selectedDate == null ? 'Seleccionar Fecha' : formatter.format(_selectedDate!)),
+                        IconButton(
+                          onPressed: _showDataPicker,
+                          icon: const Icon(Icons.calendar_month))
+                      ],
+                    ),
+                  )
+                ],
+              ),
+              const SizedBox(height: 16),
+              Row(
+                children: [
+                  DropdownButton(
+                    value: _selectedCategory,
+                    items: Category.values.map((category) {
+                      return DropdownMenuItem(
+                        value: category,
+                        child: Text(category.name.toUpperCase()));
+                    }).toList(),
+                    onChanged: (value) {
+                      if(value == null) {
+                        return ;
+                      }
+                      setState(() {
+                        _selectedCategory = value;
+                      });
+                    }),
+                  const Spacer(),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: const Text('Cancelar')),
+                  ElevatedButton(
+                    onPressed: _addExpense,
+                    child: const Text('Agregar Gasto'))
+                ],
               )
             ],
           ),
-          const SizedBox(height: 16),
-          Row(
-            children: [
-              DropdownButton(
-                value: _selectedCategory,
-                items: Category.values.map((category) {
-                  return DropdownMenuItem(
-                    value: category,
-                    child: Text(category.name.toUpperCase()));
-                }).toList(),
-                onChanged: (value) {
-                  if(value == null) {
-                    return ;
-                  }
-                  setState(() {
-                    _selectedCategory = value;
-                  });
-                }),
-              const Spacer(),
-              TextButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: const Text('Cancelar')),
-              ElevatedButton(
-                onPressed: _addExpense,
-                child: const Text('Agregar Gasto'))
-            ],
-          )
-        ],
+        ),
       ),
     );
   }
