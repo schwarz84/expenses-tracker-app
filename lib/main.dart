@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-
 import 'package:expenses_tracker/widgets/widgets.dart';
 
 var kColorScheme = ColorScheme.fromSeed(seedColor: const Color.fromARGB(150, 255, 0, 0));

@@ -16,11 +16,11 @@ class Expenses extends StatefulWidget {
 
 class _ExpensesState extends State<Expenses> {
   final List<Expense> _registeredExpenses = [
-    Expense(title: 'Curso de Flutter', amount: 12.49, date: DateTime.now(), category: Category.educacion),
-    Expense(title: 'Cine', amount: 10.25, date: DateTime.now(), category: Category.ocio),
+    Expense(title: 'Curso de Flutter', amount: 20000, date: DateTime.now(), category: Category.educacion),
+    Expense(title: 'Cine', amount: 20000, date: DateTime.now(), category: Category.ocio),
     Expense(title: 'FCI', amount: 100000, date: DateTime.now(), category: Category.ahorro),
     Expense(title: 'Viaje a Monaco', amount: 60000.20, date: DateTime.now(), category: Category.viajes),
-    Expense(title: 'Hamburgesa', amount: 9.77, date: DateTime.now(), category: Category.comida)
+    Expense(title: 'Hamburgesa', amount: 70000, date: DateTime.now(), category: Category.comida),
   ];
 
   void _addNewExpenseModal() {
@@ -83,7 +83,7 @@ class _ExpensesState extends State<Expenses> {
       ),
       body: Column(
         children: [
-          const Text('Aqui va los Charts'),
+          Chart(expenses: _registeredExpenses),
           Expanded(
             child: mainContent
           )
