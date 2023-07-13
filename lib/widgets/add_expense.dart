@@ -89,9 +89,8 @@ class _NewExpenseState extends State<NewExpense> {
     return SizedBox(
       height: double.infinity,
       child: SingleChildScrollView(
-        reverse: true,
         child: Padding(
-          padding: EdgeInsets.fromLTRB(20, 40, 20, keyboardSpace + 20),
+          padding: EdgeInsets.fromLTRB(20, 20, 20, keyboardSpace + 20),
           child: Column(
             children: [
               TextField(
